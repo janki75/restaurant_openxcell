@@ -1,0 +1,58 @@
+
+<div class="single-sec">
+      <div class="container">
+              <!-- start content -->
+              <h1 style="margin-left: 30%">Restaurant Details</h1>
+         <div class="col-md-9 det">
+             <div class="single_left">
+              <div class="grid images_3_of_2">
+                <ul style="list-style-type: none" id="etalage">
+                 <li>
+                     <img class="etalage_thumb_image" src="http://localhost:3000/images/{{r_img}}" class="img-responsive" />
+                 </li>
+                </ul>
+                 </div>
+             </div>
+             <div class="single-right">
+              <h3>{{r_name}}</h3>
+               <div class="cost">
+                <div class="prdt-cost">
+                  <ul>
+                    <li>{{r_city}},{{r_area}}</li>
+                  </ul>
+                </div>
+
+                <div class="clearfix"></div>
+               </div>
+               <div class="item-list">
+               <div class="single-bottom1">
+               <h6>Details</h6>
+
+              <br>
+              <ul>
+                  <h3 style="font-family: Palatino"><b>Food Available:</b></h3>
+                  <li *ngFor="let item of arrfoodtype">
+                    {{item.c_name}}
+                  </li>
+                  </ul>  
+                  <h3 style="font-family: Palatino"><b>Contact No:</b>
+                  <span style="font-size:15px">  {{r_contactno}}</span>
+                  </h3>
+                  <h3 style="font-family: Palatino"><b>Timing:</b>
+                    <span style="font-size:15px">   {{ r_start_time}} - {{r_end_time}}</span>
+                    </h3>
+
+                         
+                  
+
+              </div>
+             </div>
+             <div class="clearfix"></div>
+
+           </div>
+
+       </div>
+            <div class="clearfix"></div>
+       </div>
+<br><br>
+        

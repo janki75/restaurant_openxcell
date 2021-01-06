@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 style="margin-left: 20%">Add Cuisine</h1>
+<form style=" margin-left: 20%;"  method="POST" #addForm="ngForm">
+        <mat-form-field appearance="fill">
+                <mat-label>Choose cuisine</mat-label>
+                <select [(ngModel)]="c_id" id="r_city" name="r_city" matNativeControl required>
+                  <option [value]="item.c_id" *ngFor="let item of arrcu" >{{item.c_name}}</option>
+                  
+                </select>
+              </mat-form-field><br>
+              <input [disabled] = "addForm.invalid" (click)="onadd()" type="button" class="item_add items" value="Add cuisine">
+</form>
+</div>

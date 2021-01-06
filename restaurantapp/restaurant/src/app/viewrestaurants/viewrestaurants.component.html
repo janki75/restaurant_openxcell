@@ -1,0 +1,152 @@
+
+<div class="top_bg">
+    <div class="container">
+      <div class="header_top-sec">
+
+        <div class="top_left">
+          <ul>
+            <li class="top_link"><a style="cursor: pointer" (click)="onclickcreaterestaurant()">Create Restaurant</a>
+            </li>
+          </ul>
+                </div>
+          <div class="clearfix"> </div>
+      </div>
+    </div>
+  </div>
+  <div class="header_top">
+     <div class="container">
+       <div class="logo">
+       </div>
+       <div class="header_right">
+         <div class="login">
+         </div>
+       </div>
+        <div class="clearfix"></div>
+     </div>
+  </div>
+
+<div *ngIf="nameflag">
+    <form  #addForm1="ngForm"   method="POST" class="example-form">
+        <mat-form-field style="margin-left: 90%" class="example-full-width">
+          <mat-label>Restaurant Name</mat-label>
+          <input  required name="r_name" id="r_name" [(ngModel)]="resname" matInput placeholder="Enter Restaurant Name">  
+        </mat-form-field>
+        <!-- <button>hi</button> -->
+        <input [disabled] = "addForm1.invalid" (click)="searchname()" style="margin-left: 90%"  type="button" class="item_add items" value="Apply Filter">
+  </form>   
+  </div> 
+
+
+  <div *ngIf="cityflag">
+      <form method="POST" #addForm="ngForm"  class="example-form">
+          <mat-form-field style="margin-left: 90%" class="example-full-width">
+            <mat-label>City Name</mat-label>
+            <input required name="r_city" id="r_city" [(ngModel)]="r_city" matInput placeholder="Enter City Name">
+
+          </mat-form-field>
+          <input [disabled] = "addForm.invalid" (click)="searchbycity()" style="margin-left: 90%"  type="button" class="item_add items" value="Apply Filter">
+    </form>   
+    </div>
+    
+    
+    <div *ngIf="statusflag">
+      <form method="POST" #addForm2="ngForm"  class="example-form">
+          <!-- <mat-form-field style="margin-left: 90%" class="example-full-width">
+            <mat-label>Status</mat-label>
+            <input required name="r_status" id="r_status" [(ngModel)]="r_status" matInput placeholder="Enter status i.e open or close">
+
+          </mat-form-field> -->
+
+
+          <mat-form-field style="margin-left: 90%" appearance="fill">
+              <mat-label>Search By status</mat-label>
+              <mat-select required name="r_status" id="r_status" [(ngModel)]="r_status">
+                <mat-option (onSelectionChange)="change1($event)" *ngFor="let item of statusarr" [value]="item">
+                  {{item}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <input [disabled] = "addForm2.invalid" (click)="searchbystatus()" style="margin-left: 90%"  type="button" class="item_add items" value="Apply Filter">
+    </form>   
+    </div> 
+
+  <!-- side menu starts -->
+  <div class="container">
+  <div class="rsidebar span_1_of_left">
+      <section  class="sky-form">
+          <div class="product_right">
+              <div class="tab1" >
+                  <ul style="list-style-type: none">
+                    <li>
+                          <mat-form-field appearance="fill">
+                              <mat-label>Search By</mat-label>
+                              <mat-select [(ngModel)]="selvalue">
+                                <mat-option (onSelectionChange)="change($event)" *ngFor="let item of filterarr" [value]="item">
+                                  {{item}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+
+                    </li>
+                    <li>
+                      <input (click)="seeall()"   type="button" class="item_add items" value="See All">
+                    </li>
+
+                     <div class="clearfix"> </div>
+                   </ul>
+
+                   </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- side menu ends -->
+
+
+    <!-- no data starts -->
+    <div *ngIf="empty" class="col-md-9 product-model-sec">
+      
+        <div class="product-grid love-grid" >
+          <div class="more-product"><span> </span></div>
+          <div class="product-img b-link-stripe b-animate-go  thickbox">
+            <img width="50%" height="50%" src="http://localhost:3000/images/No record found.png"  alt=""/>
+          </div>
+        </div>
+     
+    </div>
+    <!-- no data end -->
+
+
+		 <div class="col-md-9 product-model-sec">
+  <a *ngFor="let item of restaurant_arr">
+    <div class="product-grid love-grid" >
+      <div class="more-product"><span> </span></div>
+      <div class="product-img b-link-stripe b-animate-go  thickbox">
+        <img src="http://localhost:3000/images/{{item.r_img}}"  class="img-responsive" alt=""/>
+        <div class="b-wrapper">
+        <h4 class="b-animate b-from-left  b-delay03">
+        <button  (click)="ondetail(item.r_id)" class="btns"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>Quick Detail</button>
+        </h4>
+        </div>
+      </div>
+
+      <div class="product-info simpleCart_shelfItem">
+        <div class="product-info-cust prt_name">
+          <h4>{{item.r_name |uppercase}}</h4>
+      <span class="item_price">{{item.r_area}},{{item.r_city}}</span><br>
+         <input (click)="ondetail(item.r_id)" type="button" class="item_add items" value="Detail">&nbsp;
+         <input (click)="onclick(item.r_id)" type="button" class="item_add items" value="Add Cuisine">
+        </div>
+        <div class="clearfix"> </div>
+      </div>
+    </div>
+  </a>
+</div>
+</div>
+
+
+
+
+
+
+

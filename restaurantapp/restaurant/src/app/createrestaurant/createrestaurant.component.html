@@ -1,0 +1,92 @@
+<div class="top_bg">
+    <!-- <div class="container"> -->
+      <div class="header_top-sec">
+
+        <div class="top_left">
+          <ul>
+            <li class="top_link"><a style="cursor: pointer" (click)="onclick()">View Restaurant</a>
+            </li>|
+          </ul>
+                </div>
+          <div class="clearfix"> </div>
+      </div>
+    <!-- </div> -->
+  </div><br>
+  <br>
+<div class="container">
+  <h1 style="margin-left:20%">Add New Restaurant</h1>
+<form method="POST" #addForm="ngForm" enctype="multipart/form-data" class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Restaurant name</mat-label>
+    <input matInput #rname="ngModel" required [(ngModel)]="r_name" type="text" id="r_name" name="r_name" placeholder="Enter Restaurant name..">
+  </mat-form-field>
+  <div [hidden]="rname.valid || rname.untouched">
+      <div [hidden]="!rname.errors?.required"  class="text-danger">
+            <font size=2>*please enter Restaurant Name</font>
+          </div>
+         </div>
+<br>
+
+         <mat-form-field class="example-full-width">
+          <mat-label>Restaurant Area</mat-label>
+          <input #rarea="ngModel" matInput required [(ngModel)]="r_area" type="text" id="r_area" name="r_area" placeholder="Enter Restaurant Area..">
+        </mat-form-field>
+        <div [hidden]="rarea.valid || rarea.untouched">
+            <div [hidden]="!rarea.errors?.required"  class="text-danger">
+                  <font size=2>*please enter Restaurant Area</font>
+                </div>
+               </div>
+
+
+
+               <br>
+
+              <mat-form-field appearance="fill">
+                <mat-label>City</mat-label>
+                <select [(ngModel)]="r_city" id="r_city" name="r_city" matNativeControl required>
+                  <option *ngFor="let item of arrcity" >{{item.value}}</option>
+                  
+                </select>
+              </mat-form-field>
+
+               <br>
+               <mat-form-field class="example-full-width">
+                <mat-label>Restaurant Contact No</mat-label>
+                <input maxlength="10" #rco="ngModel" matInput required [(ngModel)]="r_contactno" type="text" id="r_contactno" name="r_contactno" placeholder="Enter Contact No..">
+              </mat-form-field>
+              <div [hidden]="rco.valid || rco.untouched">
+                  <div [hidden]="!rco.errors?.required"  class="text-danger">
+                        <font size=2>*please enter Contact No</font>
+                      </div>
+                     </div>
+
+                    <br>
+                    <mat-form-field class="example-full-width">
+                     <mat-label>Restaurant start time</mat-label>
+                     <input #rs="ngModel" matInput required [(ngModel)]="r_start_time" type="time" id="r_start_time" name="r_start_time" placeholder="Choose StartTime..">
+                   </mat-form-field>
+                   <div [hidden]="rs.valid || rs.untouched">
+                       <div [hidden]="!rs.errors?.required"  class="text-danger">
+                             <font size=2>*please choose start time</font>
+                           </div>
+                          </div>
+
+
+                          <br>
+                          <mat-form-field class="example-full-width">
+                           <mat-label>Restaurant end time</mat-label>
+                           <input required #re="ngModel" matInput [(ngModel)]="r_end_time" type="time" id="r_end_time" name="r_end_time" placeholder="Choose EndTime..">
+                         </mat-form-field>
+                         <div [hidden]="re.valid || re.untouched">
+                             <div [hidden]="!re.errors?.required"  class="text-danger">
+                                   <font size=2>*please choose end time</font>
+                                 </div>
+                                </div>
+
+                                <br>
+                                 <input required name="r_img" class="form-control" placeholder="Enter Image" type="file" (change)="onChange($event)">
+                             
+                            
+                               <button  [disabled] = "addForm.invalid" (click)="onadd()" class="btn button5">Create</button>
+</form>
+</div>
